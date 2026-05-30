@@ -24,14 +24,12 @@ const cardVariants: Variants = {
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
-export default function NakedBikes() {
-    // شيلنا الـ useState واستدعينا كل حاجة من المخزن بـ سطر واحد!
+export default function NakedBikes() {
     const { cartItems, isCartOpen, addToCart, removeFromCart, setIsCartOpen } = useCartStore();
 
     return (
         <main className="min-h-screen bg-zinc-950 text-white pb-20 selection:bg-red-600 selection:text-white">
 
-            {/* Navbar */}
             <nav className="flex justify-between items-center p-6 border-b border-white/10 bg-zinc-950/80 sticky top-0 backdrop-blur-xl z-40">
                 <Link href="/" className="text-3xl font-bold tracking-widest cursor-pointer">
                     MOTO<span className="text-red-600">Vroom</span>
@@ -45,7 +43,6 @@ export default function NakedBikes() {
                 </div>
             </nav>
 
-            {/* Hero Section */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -61,7 +58,6 @@ export default function NakedBikes() {
                 </div>
             </motion.div>
 
-            {/* Products Grid */}
             <div className="max-w-7xl mx-auto px-6 mt-16">
                 <motion.div
                     variants={containerVariants}
@@ -105,7 +101,6 @@ export default function NakedBikes() {
                 </motion.div>
             </div>
 
-            {/* Cart Sidebar */}
             <div className={`fixed top-0 right-0 h-full w-full md:w-[400px] bg-zinc-950 border-l border-white/10 z-50 transform transition-transform duration-500 ease-in-out ${isCartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                 <div className="p-6 flex flex-col h-full">
                     <div className="flex justify-between items-center mb-8">

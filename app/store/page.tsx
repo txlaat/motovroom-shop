@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-// الداتا بتاعتنا
+import { motion, AnimatePresence } from "framer-motion";
 const products = [
   { id: 1, name: "Benelli S200", category: "Naked", price: 1500, image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=500&q=80" },
   { id: 2, name: "Yamaha MT-09", category: "Naked", price: 9000, image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=500&q=80" },
@@ -11,34 +9,24 @@ const products = [
   { id: 4, name: "Kawasaki Ninja ZX-10R", category: "Race", price: 17000, image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=500&q=80" }
 ];
 
-export default function Store() {
-  // 1. إدارة حالة السلة (State Management)
-  // بدل ما كنا بنخزن رقم، بقينا بنخزن (مصفوفة) فيها الموتوسيكلات اللي اختارها
-  const [cartItems, setCartItems] = useState<any[]>([]);
-  // حالة عشان نعرف السلة مفتوحة ولا مقفولة
+export default function Store() {
+  const [cartItems, setCartItems] = useState<any[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const nakedBikes = products.filter(bike => bike.category === "Naked");
-  const raceBikes = products.filter(bike => bike.category === "Race");
-
-  // دالة إضافة الموتوسيكل للسلة
+  const raceBikes = products.filter(bike => bike.category === "Race");
   const addToCart = (bike: any) => {
     setCartItems(prev => [...prev, bike]);
-    setIsCartOpen(true); // نفتح السلة تلقائي أول ما يضيف حاجة
-  };
-
-  // دالة مسح الموتوسيكل من السلة
+    setIsCartOpen(true); 
+  };
   const removeFromCart = (indexToRemove: number) => {
     setCartItems(prev => prev.filter((_, index) => index !== indexToRemove));
-  };
-
-  // حساب الإجمالي (بيلف على كل المكن في السلة ويجمع سعرهم)
+  };
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white pb-20 relative overflow-hidden">
-      
-      {/* Navbar */}
+
       <nav className="flex justify-between items-center p-6 border-b border-zinc-800 bg-zinc-950/80 sticky top-0 backdrop-blur-md z-40">
         <h1 className="text-3xl font-bold tracking-widest">
           MOTO<span className="text-red-600">H2</span>
@@ -55,7 +43,6 @@ export default function Store() {
         </div>
       </nav>
 
-      {/* Cart Sidebar (السلة الجانبية) */}
       <div 
         className={`fixed top-0 right-0 h-full w-full md:w-96 bg-zinc-900 border-l border-zinc-800 z-50 transform transition-transform duration-300 ease-in-out ${
           isCartOpen ? 'translate-x-0' : 'translate-x-full'
@@ -110,16 +97,15 @@ export default function Store() {
         </div>
       </div>
 
-      {/* Overlay (خلفية ضبابية بتظهر ورا السلة عشان تركز عينك عليها) */}
       {isCartOpen && (
         <div 
           className="fixed inset-0 bg-black/60 z-40 backdrop-blur-sm transition-opacity"
-          onClick={() => setIsCartOpen(false)} // لو داس بره السلة، تقفل
+          onClick={() => setIsCartOpen(false)} 
         />
       )}
 
       <div className="max-w-7xl mx-auto px-6 mt-12">
-        {/* Naked Bikes Section */}
+        
         <section id="naked" className="mb-16">
           <h2 className="text-4xl font-bold border-l-4 border-red-600 pl-4 mb-8">NAKED BIKES</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -129,7 +115,6 @@ export default function Store() {
           </div>
         </section>
 
-        {/* Race Bikes Section */}
         <section id="race">
           <h2 className="text-4xl font-bold border-l-4 border-red-600 pl-4 mb-8">RACE BIKES</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -141,9 +126,7 @@ export default function Store() {
       </div>
     </main>
   );
-}
-
-// Product Card Component
+}
 function ProductCard({ bike, onAddToCart }: { bike: any, onAddToCart: () => void }) {
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden group hover:border-red-600/50 transition-all">

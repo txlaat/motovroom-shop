@@ -3,9 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { useCartStore } from "../cartStore";
-
-// داتا مكن الريس
+import { useCartStore } from "../cartStore";
 const products = [
   { id: 101, name: "Honda CBR600RR", specs: "599cc | 119 HP", price: 12000, image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&q=80" },
   { id: 102, name: "Kawasaki Ninja ZX-10R", specs: "998cc | 203 HP", price: 17500, image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=500&q=80" },
@@ -30,8 +28,7 @@ export default function RaceBikes() {
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white pb-20 selection:bg-red-600 selection:text-white">
-      
-      {/* Navbar - لاحظ هنا الـ Active Link بقى على الـ RACE */}
+
       <nav className="flex justify-between items-center p-6 border-b border-white/10 bg-zinc-950/80 sticky top-0 backdrop-blur-xl z-40">
         <Link href="/" className="text-3xl font-bold tracking-widest cursor-pointer">
           MOTO<span className="text-red-600">Vroom</span>
@@ -45,7 +42,6 @@ export default function RaceBikes() {
         </div>
       </nav>
 
-      {/* Hero Section - طابع السرعة والـ Aerodynamics */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -61,7 +57,6 @@ export default function RaceBikes() {
         </div>
       </motion.div>
 
-      {/* Products Grid */}
       <div className="max-w-7xl mx-auto px-6 mt-16">
         <motion.div 
           variants={containerVariants}
@@ -105,7 +100,6 @@ export default function RaceBikes() {
         </motion.div>
       </div>
 
-      {/* Cart Sidebar */}
       <div className={`fixed top-0 right-0 h-full w-full md:w-[400px] bg-zinc-950 border-l border-white/10 z-50 transform transition-transform duration-500 ease-in-out ${isCartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="p-6 flex flex-col h-full">
           <div className="flex justify-between items-center mb-8">
