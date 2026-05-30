@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useCartStore } from "../cartStore";
 
 const products = [
@@ -11,7 +11,7 @@ const products = [
     { id: 3, name: "KTM 1290 Super Duke R", specs: "1301cc | 180 HP", price: 19000, image: "https://images.unsplash.com/photo-1625035513220-4e3d36b85e05?w=500&q=80" },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
         opacity: 1,
@@ -19,7 +19,7 @@ const containerVariants = {
     }
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };

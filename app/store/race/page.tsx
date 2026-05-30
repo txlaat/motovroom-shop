@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useCartStore } from "../cartStore";
 
 // داتا مكن الريس
@@ -12,7 +12,7 @@ const products = [
   { id: 103, name: "BMW S1000RR", specs: "999cc | 205 HP", price: 21000, image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=500&q=80" },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -20,7 +20,7 @@ const containerVariants = {
   }
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
