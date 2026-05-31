@@ -5,13 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useCartStore } from "../cartStore";
 
-const products = [
-  { id: 1, name: "Benelli S200", specs: "200cc | 18 HP | Single-Cylinder", price: 1500, image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=500&q=80" },
-  { id: 2, name: "Yamaha MT-09", specs: "890cc | 117 HP | Inline-3", price: 9500, image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=500&q=80" },
-  { id: 3, name: "Kawasaki Z900", specs: "948cc | 125 HP | Inline-4", price: 9200, image: "https://images.unsplash.com/photo-1632245889029-e406faaa34cd?w=500&q=80" },
-  { id: 4, name: "Ducati Monster SP", specs: "937cc | 111 HP | Testastretta V2", price: 15500, image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&q=80" },
-  { id: 5, name: "KTM 1290 Super Duke R", specs: "1301cc | 180 HP | V-Twin Beast", price: 19500, image: "https://images.unsplash.com/photo-1625035513220-4e3d36b85e05?w=500&q=80" },
-];
+import { allProducts } from "../data";
 
 const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -72,7 +66,7 @@ export default function NakedBikes() {
                     animate="show"
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
                 >
-                    {products.map(bike => (
+                    {allProducts.filter(bike => bike.category === "Naked").map(bike => (
                         <motion.div
                             key={bike.id}
                             variants={cardVariants}
@@ -80,20 +74,19 @@ export default function NakedBikes() {
                         >
                             <div className="absolute inset-0 bg-gradient-to-t from-red-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
 
-                            <div className="h-72 overflow-hidden relative z-10 p-4">
-                                <img
-                                    src={bike.image}
-                                    alt={bike.name}
-                                    className="w-full h-full object-cover rounded-lg group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700"
-                                />
-                            </div>
-
-                            <div className="p-6 relative z-10">
-                                <div className="flex justify-between items-start mb-2">
-                                    <h3 className="text-2xl font-bold">{bike.name}</h3>
-                                    <span className="text-red-500 font-black text-xl">${bike.price}</span>
+                            <Link href={`/store/product/${bike.id}`} className="cursor-pointer">
+                                <div className="h-72 overflow-hidden relative z-10 p-4">
+                                    <img src={bike.image} alt={bike.name} className="w-full h-full object-cover rounded-lg group-hover:scale-110 transition-transform duration-700" />
                                 </div>
-                                <p className="text-zinc-500 text-sm mb-6 font-mono">{bike.specs}</p>
+                                <div className="p-6 relative z-10 pb-0">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <h3 className="text-2xl font-bold group-hover:text-red-500 transition-colors">{bike.name}</h3>
+                                        <span className="text-red-500 font-black text-xl">${bike.price}</span>
+                                    </div>
+                                    <p className="text-zinc-500 text-sm font-mono">{bike.specs}</p>
+                                </div>
+                            </Link>
+                            <div className="p-6 pt-4 relative z-10">
 
                                 <button
                                     onClick={() => addToCart(bike)}
