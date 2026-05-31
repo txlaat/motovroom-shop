@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
-import { Environment, useGLTF } from "@react-three/drei";
+import { Environment, useGLTF, useProgress } from "@react-three/drei";
 import gsap from "gsap";
 import { useRouter } from "next/navigation";
 
@@ -44,6 +44,7 @@ export default function Home() {
   const [hasEntered, setHasEntered] = useState(false); 
   const [showChoices, setShowChoices] = useState(false); 
   const router = useRouter();
+  const { progress } = useProgress();
 
   const handleEnter = () => {
     setHasEntered(true); 
@@ -56,7 +57,6 @@ export default function Home() {
   };
 
   const handleChoice = (path: string) => {
-
     router.push(path);
   };
 
@@ -70,12 +70,19 @@ export default function Home() {
         </h1>
 
         {!hasEntered && (
-          <button
-            onClick={handleEnter}
-            className="text-white text-2xl tracking-widest border border-white/50 px-10 py-3 hover:bg-white hover:text-black transition-all duration-300 animate-pulse"
-          >
-            ENTER
-          </button>
+          <div className="flex flex-col items-center gap-4">
+            <button
+              onClick={handleEnter}
+              className="text-white text-xl md:text-2xl tracking-widest border border-white/50 px-10 py-3 transition-all duration-300 hover:bg-white hover:text-black animate-pulse"
+            >
+              ENTER
+            </button>
+            {progress < 100 && (
+              <span className="text-zinc-500 text-sm tracking-widest animate-pulse">
+                LOADING 3D... {Math.round(progress)}%
+              </span>
+            )}
+          </div>
         )}
 
         {showChoices && (
@@ -96,7 +103,7 @@ export default function Home() {
         )}
       </div>
 
-      <div className={`absolute inset-0 z-0 transition-opacity duration-1000 ${showChoices ? "opacity-0" : "opacity-100"}`}>
+      <div className={`absolute inset-0 z-0 pointer-events-none transition-opacity duration-1000 ${showChoices ? "opacity-0" : "opacity-100"}`}>
         <Canvas camera={{ position: [-1, 1.5, 4], fov: 50 }}>
           <CameraController hasEntered={hasEntered} onZoomComplete={handleZoomComplete} />
           <ambientLight intensity={0.5} />

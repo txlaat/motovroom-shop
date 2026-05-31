@@ -29,15 +29,20 @@ export default function RaceBikes() {
   return (
     <main className="min-h-screen bg-zinc-950 text-white pb-20 selection:bg-red-600 selection:text-white">
 
-      <nav className="flex justify-between items-center p-6 border-b border-white/10 bg-zinc-950/80 sticky top-0 backdrop-blur-xl z-40">
-        <Link href="/" className="text-3xl font-bold tracking-widest cursor-pointer">
+      {/* Navbar - Responsive */}
+      <nav className="flex justify-between items-center p-4 md:p-6 border-b border-white/10 bg-zinc-950/80 sticky top-0 backdrop-blur-xl z-40 w-full">
+        {/* اللوجو صغرناه على الموبايل (text-xl) وفي الكمبيوتر (text-3xl) */}
+        <Link href="/" className="text-xl md:text-3xl font-bold tracking-widest cursor-pointer whitespace-nowrap">
           MOTO<span className="text-red-600">Vroom</span>
         </Link>
-        <div className="flex gap-8 items-center font-bold tracking-wider text-sm">
+        
+        {/* المسافات والخطوط صغرت على الموبايل */}
+        <div className="flex gap-3 md:gap-8 items-center font-bold tracking-wider text-xs md:text-sm">
           <Link href="/store/naked" className="text-zinc-500 hover:text-red-500 transition-colors pb-1">NAKED</Link>
           <Link href="/store/race" className="text-red-500 border-b-2 border-red-500 pb-1">RACE</Link>
-          <button onClick={() => setIsCartOpen(true)} className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded flex items-center gap-2 transition-all">
-            CART <span className="bg-black px-2 rounded-full text-xs">{cartItems.length}</span>
+          
+          <button onClick={() => setIsCartOpen(true)} className="bg-red-600 hover:bg-red-700 px-3 py-1.5 md:px-4 md:py-2 rounded flex items-center gap-1 md:gap-2 transition-all">
+            CART <span className="bg-black px-1.5 md:px-2 rounded-full text-[10px] md:text-xs">{cartItems.length}</span>
           </button>
         </div>
       </nav>

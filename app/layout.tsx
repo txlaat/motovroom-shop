@@ -1,20 +1,17 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// 1. دي الإعدادات اللي بتجبر الموبايل يعرض الموقع بحجم الشاشة الحقيقي وتمنع الزووم
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false, // دي اللي بتمنع الـ Pinch to zoom
+};
 
 export const metadata: Metadata = {
-  title: "MotoVroom | Ultimate Motorcycle Store",
-  description: "Discover raw power and aero precision. Find your perfect motorcycle at MotoVroom.",
+  title: "MotoVroom",
+  description: "Raw Power & Speed",
 };
 
 export default function RootLayout({
@@ -23,11 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    // 2. ضفنا overflow-x-hidden هنا عشان نمنع أي سكرول بالعرض (بيعمل شريط أبيض)
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-zinc-950 overflow-x-hidden text-white" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
