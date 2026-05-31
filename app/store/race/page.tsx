@@ -5,9 +5,11 @@ import Link from "next/link";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useCartStore } from "../cartStore";
 const products = [
-  { id: 101, name: "Honda CBR600RR", specs: "599cc | 119 HP", price: 12000, image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&q=80" },
-  { id: 102, name: "Kawasaki Ninja ZX-10R", specs: "998cc | 203 HP", price: 17500, image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=500&q=80" },
-  { id: 103, name: "BMW S1000RR", specs: "999cc | 205 HP", price: 21000, image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=500&q=80" },
+  { id: 101, name: "Yamaha YZF-R6", specs: "599cc | 118 HP | The Track Weapon", price: 12500, image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=500&q=80" },
+  { id: 102, name: "Honda CBR600RR", specs: "599cc | 119 HP | Pure Racing DNA", price: 11800, image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&q=80" },
+  { id: 103, name: "Kawasaki Ninja ZX-10R", specs: "998cc | 203 HP | WorldSBK Champion", price: 17500, image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=500&q=80" },
+  { id: 104, name: "Yamaha YZF-R1", specs: "998cc | 200 HP | Crossplane Symphony", price: 18000, image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=500&q=80" },
+  { id: 105, name: "BMW S1000RR", specs: "999cc | 205 HP | German M Power", price: 21500, image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=500&q=80" },
 ];
 
 const containerVariants: Variants = {

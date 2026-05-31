@@ -6,9 +6,11 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useCartStore } from "../cartStore";
 
 const products = [
-    { id: 1, name: "Benelli S200", specs: "200cc | 18 HP", price: 1500, image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=500&q=80" },
-    { id: 2, name: "Yamaha MT-09", specs: "890cc | 117 HP", price: 9000, image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=500&q=80" },
-    { id: 3, name: "KTM 1290 Super Duke R", specs: "1301cc | 180 HP", price: 19000, image: "https://images.unsplash.com/photo-1625035513220-4e3d36b85e05?w=500&q=80" },
+  { id: 1, name: "Benelli S200", specs: "200cc | 18 HP | Single-Cylinder", price: 1500, image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=500&q=80" },
+  { id: 2, name: "Yamaha MT-09", specs: "890cc | 117 HP | Inline-3", price: 9500, image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=500&q=80" },
+  { id: 3, name: "Kawasaki Z900", specs: "948cc | 125 HP | Inline-4", price: 9200, image: "https://images.unsplash.com/photo-1632245889029-e406faaa34cd?w=500&q=80" },
+  { id: 4, name: "Ducati Monster SP", specs: "937cc | 111 HP | Testastretta V2", price: 15500, image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&q=80" },
+  { id: 5, name: "KTM 1290 Super Duke R", specs: "1301cc | 180 HP | V-Twin Beast", price: 19500, image: "https://images.unsplash.com/photo-1625035513220-4e3d36b85e05?w=500&q=80" },
 ];
 
 const containerVariants: Variants = {
