@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { useCartStore } from "../cartStore";
+import { useCartStore } from "../cartStore";
 const products = [
   { id: 101, name: "Yamaha YZF-R6", specs: "599cc | 118 HP | The Track Weapon", price: 12500, image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=500&q=80" },
   { id: 102, name: "Honda CBR600RR", specs: "599cc | 119 HP | Pure Racing DNA", price: 11800, image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&q=80" },
@@ -136,6 +136,22 @@ export default function RaceBikes() {
               ))}
             </AnimatePresence>
           </div>
+
+          {cartItems.length > 0 && (
+            <div className="mt-6 border-t border-white/10 pt-6">
+              <div className="flex justify-between text-xl font-bold mb-4">
+                <span>Total:</span>
+                <span className="text-red-500">
+                  ${cartItems.reduce((total, item) => total + item.price, 0).toLocaleString()}
+                </span>
+              </div>
+              <Link href="/store/checkout" onClick={() => setIsCartOpen(false)}>
+                <button className="w-full bg-red-600 hover:bg-red-700 text-white py-4 rounded font-bold uppercase tracking-wider transition-colors">
+                  Proceed to Checkout
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       {isCartOpen && <div className="fixed inset-0 bg-black/80 z-40 backdrop-blur-sm transition-opacity" onClick={() => setIsCartOpen(false)} />}

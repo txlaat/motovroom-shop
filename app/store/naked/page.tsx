@@ -26,7 +26,7 @@ const cardVariants: Variants = {
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
-export default function NakedBikes() {
+export default function NakedBikes() {
     const { cartItems, isCartOpen, addToCart, removeFromCart, setIsCartOpen } = useCartStore();
 
     return (
@@ -137,6 +137,22 @@ export default function NakedBikes() {
                             ))}
                         </AnimatePresence>
                     </div>
+
+                    {cartItems.length > 0 && (
+                        <div className="mt-6 border-t border-white/10 pt-6">
+                            <div className="flex justify-between text-xl font-bold mb-4">
+                                <span>Total:</span>
+                                <span className="text-red-500">
+                                    ${cartItems.reduce((total, item) => total + item.price, 0).toLocaleString()}
+                                </span>
+                            </div>
+                            <Link href="/store/checkout" onClick={() => setIsCartOpen(false)}>
+                                <button className="w-full bg-red-600 hover:bg-red-700 text-white py-4 rounded font-bold uppercase tracking-wider transition-colors">
+                                    Proceed to Checkout
+                                </button>
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
             {isCartOpen && <div className="fixed inset-0 bg-black/80 z-40 backdrop-blur-sm transition-opacity" onClick={() => setIsCartOpen(false)} />}
