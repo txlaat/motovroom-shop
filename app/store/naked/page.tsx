@@ -48,7 +48,7 @@ export default function NakedBikes() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
-                className="relative w-full h-[40vh] flex items-center justify-center overflow-hidden border-b border-white/5"
+                className="relative w-full h-[25vh] flex items-center justify-center overflow-hidden border-b border-white/5"
             >
                 <div className="absolute inset-0 bg-gradient-to-b from-red-900/20 to-zinc-950 z-0" />
                 <div className="relative z-10 text-center">
@@ -59,7 +59,7 @@ export default function NakedBikes() {
                 </div>
             </motion.div>
 
-            <div className="max-w-7xl mx-auto px-6 mt-16">
+            <div className="max-w-7xl mx-auto px-6 mt-8">
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"

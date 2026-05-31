@@ -58,7 +58,7 @@ export default function Success() {
             YOUR MACHINE IS READY
           </p>
           <p className="text-zinc-400 text-sm md:text-base leading-relaxed px-4">
-            تهانينا يا وحش! العملية تمت بنجاح، والموتوسيكل بتاعك اتنقل للجراج الخاص بك وجاهز للانطلاق على الأسفلت.
+            مبروك يا وحش! العملية تمت بنجاح، والبايك بقى بتاعك وجاهز للجري على الأسفلت.
           </p>
         </motion.div>
 
